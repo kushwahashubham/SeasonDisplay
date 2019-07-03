@@ -2,12 +2,9 @@ import React,{Component} from 'react';
 import ReactDom from 'react-dom';
 import SeasonsDisplay from './SeasonsDisplay';
 
-class App extends React.Component{
+class App extends Component{
 
-    state ={
-        lat: null,
-        err:null
-    }
+    state ={lat: null,err:null} 
     /* constructor(props){
         super(props);
         this.state = {
@@ -16,9 +13,9 @@ class App extends React.Component{
         }} */
 
     conditionalRender = ()=>{
-        if(this.state.err) return <div>Error: {this.state.err}</div>
-       else if(this.state.lat) return <div>Latitude: {this.state.lat}</div>;
-       else return <div>Loading ...</div>;
+        if(this.state.err) return <div>Error: {this.state.err}</div>;
+        else if(this.state.lat) return <div><SeasonsDisplay lat={this.state.lat}/></div>;
+         else return <div>Loading ...</div>;
     }
     componentDidMount(){
         window.navigator.geolocation.getCurrentPosition(
